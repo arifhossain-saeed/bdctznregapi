@@ -7,6 +7,9 @@
 // Imports - Core
 import express from 'express';
 
+// Imports - Custom Codes
+import EntryController from "../controllers/EntryController.js";
+
 // Imports - Controllers
 const apiRouter = express.Router();
 
@@ -15,8 +18,8 @@ apiRouter.get('/test', (req, res) => {
     res.send("Hurray! The Server is UP!");
 });
 
-// Routes - HomeController routes
-
+// Routes - EntryController routes
+apiRouter.get('/send_otp', EntryController.getCitizen);         // Get Citizen
 
 // Export Routes
 export default apiRouter;
