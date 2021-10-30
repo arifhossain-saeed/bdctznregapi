@@ -14,36 +14,32 @@ dotenv.config();
 // Imports - Custom Code
 
 // Create Container
-const SmsController = {};
+const SmsGenerator = {};
 
 // Generate sms and send
 const vonage = new Vonage({
-    apiKey: process.env.APIKEY,
-    apiSecret: process.env.APISECRET
+    apiKey: process.env.SMSAPIKEY,
+    apiSecret: process.env.SMSAPISECRET
 });
 
 // Process and Send SMS
-SmsController.sendSms =  (req, res) => {
-    const { formData } = req.body;
-
+SmsGenerator.sendSms =  (from, to, text) => {
     try {
-        vonage.message.sendSms(formData.from, formData.to, formData.text, (err, responseData) => {
+        vonage.message.sendSms(from, to, text, (err, responseData) => {
             if (err) {
                 console.log(err);
             } else {
                 if(responseData.messages[0]['status'] === "0") {
                     console.log("Message sent successfully.");
-                    res.send("Success! SMS Sent!");
                 } else {
                     console.log(`Message failed with error: ${responseData.messages[0]['error-text']}`);
-                    res.send(responseData.messages[0]['error-text']);
                 }
             }
         })
     } catch (error) {
-        res.json({message: error});
+        console.log(error);
     }
-});
+}
 
 // Export
-export default SmsController;
+export default SmsGenerator;
