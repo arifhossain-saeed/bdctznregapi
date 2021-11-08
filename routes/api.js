@@ -19,7 +19,7 @@ apiRouter.get('/test', (req, res) => {
 });
 
 // Routes - EntryController routes
-apiRouter.post('/send_otp', EntryController.getCitizen);         // Get Citizen
+apiRouter.post('/sms_otp', EntryController.getCitizen);         // Get Citizen
 
 // Export Routes
 export default apiRouter;
