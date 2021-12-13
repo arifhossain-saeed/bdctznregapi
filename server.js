@@ -31,7 +31,7 @@ server.use(cors());
 
 
 // Server Routes - API Routes
-server.use("/bdctznreg/api/v1", apiRoutes);
+server.use("/api/v1", apiRoutes);
 
 // Default Error Handler when the requested route is non-existent
 server.use((req, res, next) => {
