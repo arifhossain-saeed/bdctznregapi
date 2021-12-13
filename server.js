@@ -39,7 +39,7 @@ server.use((req, res, next) => {
     throw new ServerError(404, "Could not find the route you are looking for");
 });
 
-const PORT = process.env.PORT | 5000;
+const PORT = process.env.PORT || 5000;
 
 // Add database connection and start server
 mongoose.connect("mongodb+srv://bdadmin:T42oKpV0m3RJEaUd@clusternode.llqaj.mongodb.net/CitizenRegistry?retryWrites=true&w=majority")
