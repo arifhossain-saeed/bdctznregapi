@@ -41,7 +41,7 @@ server.use((req, res, next) => {
 const PORT = process.env.PORT | 5000;
 
 // Add database connection and start server
-mongoose.connect("mongodb+srv://bdadmin:T42oKpV0m3RJEaUd@clusternode.llqaj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+mongoose.connect("mongodb+srv://bdadmin:T42oKpV0m3RJEaUd@clusternode.llqaj.mongodb.net/CitizenRegistry?retryWrites=true&w=majority")
     .then(() =>  {
         server.listen(PORT);
         console.log(`Database Connected and Server is up at port ${PORT}`);

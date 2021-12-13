@@ -13,10 +13,12 @@ import ServerError from "../libs/helpers/ServerError.js";
 import CodeGenerator from "../libs/utilities/Generator.js";
 import SmsGenerator from "../libs/utilities/SmsGenerator.js";
 import EmailGenerator from "../libs/utilities/EmailGenerator.js";
+import CitizenBio from "../models/CitizenBio.js";
+
 
 // Create A Container for the Controller
-
 const EntryController = {};
+
 
 // Global Variables
 const GlobalVars = {};
@@ -32,13 +34,19 @@ EntryController.index = (req, res) => {
 }
 
 // GetCitizen Method - Citizen Entry Point
-EntryController.getCitizen = (req, res) => {
+EntryController.getCitizen = async (req, res) => {
     try {
         // Receive formData
         // const { from, to} = req.body;
 
 
         // Get NID Number and Cell Phone Number
+        const {nid, phone} = req.body;
+
+        // Check if the data exists in the collections
+        
+        const existingCitizen = await CitizenBio.findOne({...req.body}).select('-_id').select('-__v');
+        res.status(200).json(existingCitizen);
 
         // @TODO - Remove Comments from code when ready
         // Generate OTP, Send OTP and store OTP to GlobalVars.OTP
@@ -74,9 +82,9 @@ EntryController.getCitizen = (req, res) => {
         // If Modal Closed without giving OTP, take back to home page @TODO - This will be done from frontend
 
 
-        return res.json({message: "OTP Sent"});
-    } catch (e) {
-        res.json({message: e});
+        // return res.json({message: "OTP Sent"});
+    } catch (err) {
+        res.json({message: err.message});
     }
 }
 
@@ -98,6 +106,7 @@ EntryController.verifyCitizen = (req, res) => {
 
     return res.json({message: "OTP Verified"});
 }
+
 
 // Export the EntryController
 export default EntryController;
