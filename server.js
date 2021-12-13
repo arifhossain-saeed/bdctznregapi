@@ -9,7 +9,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import mongoose from 'mongoose';
-import morgan from 'morgan';
+// import morgan from 'morgan';
 import dotenv from "dotenv";
 
 // Addition - Config
@@ -23,7 +23,7 @@ import ServerError from "./libs/helpers/ServerError.js";
 const server = express();
 
 // Server Plugins
-server.use(morgan('dev'));
+// server.use(morgan('dev'));
 server.use(bodyParser.json({limit: "50mb", extended: true}))
 server.use(bodyParser.urlencoded({limit: "50mb", extended: true}));
 server.use(cors());
