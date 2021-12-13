@@ -32,7 +32,7 @@ server.use(cors());
 
 // Server Routes - API Routes
 
-server.use("/", apiRoutes);
+server.use(apiRoutes);
 
 // Default Error Handler when the requested route is non-existent
 server.use((req, res, next) => {
