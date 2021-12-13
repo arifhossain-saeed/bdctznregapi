@@ -27,7 +27,7 @@ apiRouter.get('favicon.ico', (req, res) => res.status(204));
 apiRouter.get('api/v1/districts', BorderController.getDistricts);
 apiRouter.get('api/v1/sub_districts', BorderController.getSubDistricts);
 apiRouter.post('api/v1/get_citizen', EntryController.getCitizen);
-apiRouter.post('create_citizen', CitizenController.createCitizen);
+apiRouter.post('api/v1/create_citizen', CitizenController.createCitizen);
 apiRouter.post('api/v1/update_citizen', CitizenController.updateCitizen);
 
 // Export Routes
