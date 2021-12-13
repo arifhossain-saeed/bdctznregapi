@@ -23,11 +23,12 @@ apiRouter.get('/test', (req, res) => {
 // Routes - EntryController routes
 // apiRouter.post('/sms_otp', EntryController.getCitizen);         // Get Citizen
 
-apiRouter.get('/districts', BorderController.getDistricts);
-apiRouter.get('/sub_districts', BorderController.getSubDistricts);
-apiRouter.post('/get_citizen', EntryController.getCitizen);
-apiRouter.post('/create_citizen', CitizenController.createCitizen);
-apiRouter.post('/update_citizen', CitizenController.updateCitizen);
+apiRouter.get('favicon.ico', (req, res) => res.status(204));
+apiRouter.get('api/v1/districts', BorderController.getDistricts);
+apiRouter.get('api/v1/sub_districts', BorderController.getSubDistricts);
+apiRouter.post('api/v1/get_citizen', EntryController.getCitizen);
+apiRouter.post('create_citizen', CitizenController.createCitizen);
+apiRouter.post('api/v1/update_citizen', CitizenController.updateCitizen);
 
 // Export Routes
 export default apiRouter;

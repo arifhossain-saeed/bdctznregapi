@@ -31,7 +31,8 @@ server.use(cors());
 
 
 // Server Routes - API Routes
-server.use("/api/v1", apiRoutes);
+
+server.use("/", apiRoutes);
 
 // Default Error Handler when the requested route is non-existent
 server.use((req, res, next) => {
