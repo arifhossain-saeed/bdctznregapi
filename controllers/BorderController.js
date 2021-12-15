@@ -22,7 +22,7 @@ const BorderController = {};
 // Return all districts
 BorderController.getDistricts = async(req, res) => {
     try {
-        const districts = await District.find();
+        const districts = await District.find().select('-_id').select('-__v');
         res.status(200).json(districts);
     } catch (e) {
         res.status(404).json({message: e.message});
