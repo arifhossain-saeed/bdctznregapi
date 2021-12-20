@@ -33,7 +33,7 @@ BorderController.getDistricts = async(req, res) => {
 
 BorderController.getSubDistricts = async(req, res) => {
     try {
-        const subDistricts = await SubDistrict.find();
+        const subDistricts = await SubDistrict.find().select('-_id').select('-__v');
         res.status(200).json(subDistricts);
     }catch (e) {
         res.status(404).json({message: e.message});
@@ -42,7 +42,7 @@ BorderController.getSubDistricts = async(req, res) => {
 
 BorderController.getPoliceStations = async(req, res) => {
     try {
-        const policeStations = await PoliceStation.find();
+        const policeStations = await PoliceStation.find().select('-_id').select('-__v');
         res.status(200).json(policeStations);
     }catch (e) {
         res.status(404).json({message: e.message});
@@ -51,7 +51,7 @@ BorderController.getPoliceStations = async(req, res) => {
 
 BorderController.getPostOffices = async(req, res) => {
     try {
-        const postOffices = await PostOffice.find();
+        const postOffices = await PostOffice.find().select('-_id').select('-__v');
         res.status(200).json(postOffices);
     }catch (e) {
         res.status(404).json({message: e.message});
