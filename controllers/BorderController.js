@@ -15,6 +15,8 @@ import SmsGenerator from "../libs/utilities/SmsGenerator.js";
 import EmailGenerator from "../libs/utilities/EmailGenerator.js";
 import District from "../models/District.js";
 import SubDistrict from "../models/SubDistrict.js";
+import PoliceStation from "../models/PoliceStation.js";
+import PostOffice from "../models/PostOffice.js";
 
 // Create A Container for the Controller
 const BorderController = {};
@@ -33,6 +35,24 @@ BorderController.getSubDistricts = async(req, res) => {
     try {
         const subDistricts = await SubDistrict.find();
         res.status(200).json(subDistricts);
+    }catch (e) {
+        res.status(404).json({message: e.message});
+    }
+}
+
+BorderController.getPoliceStations = async(req, res) => {
+    try {
+        const policeStations = await PoliceStation.find();
+        res.status(200).json(policeStations);
+    }catch (e) {
+        res.status(404).json({message: e.message});
+    }
+}
+
+BorderController.getPostOffices = async(req, res) => {
+    try {
+        const postOffices = await PostOffice.find();
+        res.status(200).json(postOffices);
     }catch (e) {
         res.status(404).json({message: e.message});
     }
