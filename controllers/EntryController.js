@@ -45,7 +45,7 @@ EntryController.getCitizen = async (req, res) => {
 
         // Check if the data exists in the collections
         
-        const existingCitizen = await CitizenBio.findOne({...req.body}).select('-_id').select('-__v');
+        const existingCitizen = await CitizenBio.findOne({...req.body}).select('-__v');
         res.status(200).json(existingCitizen);
 
         // @TODO - Remove Comments from code when ready

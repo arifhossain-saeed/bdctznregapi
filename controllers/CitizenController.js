@@ -24,7 +24,7 @@ CitizenController.updateCitizen = async (req, res) => {
     // res.json(newCitizen);
 
     try{
-        let updatedCitizen = await CitizenBio.findOneAndUpdate(oldCitizen, newCitizen).select('-_id').select('-__v');
+        let updatedCitizen = await CitizenBio.findOneAndUpdate(oldCitizen, newCitizen).select('-__v');
         res.status(200).json(updatedCitizen);
     }catch(err) {
         res.status(404).json({message: err.message});
